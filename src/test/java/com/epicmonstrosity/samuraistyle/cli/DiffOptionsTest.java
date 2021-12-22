@@ -10,7 +10,7 @@ class DiffOptionsTest {
 
     @Test
     void testCommandLineStandardInput() {
-        String[] args = { "--stdin" };
+        String[] args = { "--stdin", "--output", "out.xml" };
         final DiffOptions diffOptions = new DiffOptions();
         new CommandLine(diffOptions).parseArgs(args);
         assertThat(diffOptions.exclusiveInput.stdIn).isTrue();
@@ -18,7 +18,7 @@ class DiffOptionsTest {
 
     @Test
     void testCommandLineExclusiveInput() {
-        String[] args = { "--stdin", "--file", "some.diff" };
+        String[] args = { "--stdin", "--file", "some.diff", "--output", "out.xml" };
         final DiffOptions diffOptions = new DiffOptions();
         assertThrows(CommandLine.MutuallyExclusiveArgsException.class,
                 () -> new CommandLine(diffOptions).parseArgs(args));
