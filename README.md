@@ -1,4 +1,4 @@
-# Samurai-Style-Cop 2
+# Samurai Style Cop 2
 - Have a massive legacy codebase that has no styling standards?  
 - Want to add a code style standard without bulk reformatting tons of code that can cause mass merge conflicts and headache downstream?  
 - Want to lint check newly committed code only?  
@@ -12,3 +12,6 @@ A checkstyle-based tool that can generate exclusions based on git history so tha
 
 ## Why 2?
 I wrote a similar tool before that I'm not at liberty to share the code nor do I possess it, so this is a clean room rewrite.
+
+## This looks incomplete?
+Sure is, not in working order yet.
