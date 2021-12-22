@@ -114,6 +114,7 @@ public class UnifiedDiffReader {
         // Cheap way to not parse content lines without +/-
         if (line.charAt(0) != 32) {
             final DiffState diffState = machine.next(line);
+            // System.out.println(diffState.name() + " >> " + line);
             switch(diffState) {
                 case GIT_DIFF_HEADER -> documents.offer(new DiffDocument().setGitDiffHeader(new GitDiffHeader(line)));
                 case HUNK -> Optional.ofNullable(documents.peekLast()).map(x -> x.getHunkList().add(DiffHunk.parseHunk(line)));

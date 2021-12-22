@@ -16,8 +16,7 @@
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
-        <jgit.version>6.0.0.202111291000-r</jgit.version>
-        <commons-cli.version>20040117.000000</commons-cli.version>
+        <picocli.version>4.6.2</picocli.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <checkstyle.version>9.2</checkstyle.version>
         <mockito-junit.version>4.2.0</mockito-junit.version>
@@ -25,6 +24,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>info.picocli</groupId>
+            <artifactId>picocli</artifactId>
+            <version>${picocli.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -50,5 +54,27 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>info.picocli</groupId>
+                            <artifactId>picocli-codegen</artifactId>
+                            <version>4.6.2</version>
+                        </path>
+                    </annotationProcessorPaths>
+<!--                    <compilerArgs>-->
+<!--                        <arg>-Aproject=${project.groupId}/${project.artifactId}</arg>-->
+<!--                    </compilerArgs>-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
