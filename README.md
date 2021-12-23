@@ -1,4 +1,5 @@
 # Samurai Style Cop 2 (for Java projects)
+[![Java CI with Maven](https://github.com/gregfrazier/samurai-style-cop2/actions/workflows/maven.yml/badge.svg)](https://github.com/gregfrazier/samurai-style-cop2/actions/workflows/maven.yml)
 - Have a massive legacy codebase that has no styling standards?  
 - Want to add a code style standard without bulk reformatting tons of code that can cause mass merge conflicts and headache downstream?  
 - Want to lint check newly staged/modified code only?  
