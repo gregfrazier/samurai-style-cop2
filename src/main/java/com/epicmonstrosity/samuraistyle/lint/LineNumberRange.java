@@ -18,19 +18,17 @@ public class LineNumberRange {
     }
 
     public String getDisjointedRange() {
-        List<IntRange> suppressionRanges = new ArrayList<>();
+        final List<IntRange> suppressionRanges = new ArrayList<>();
         int trackingLine = 1;
         for (Map.Entry<Integer, Integer> excluded : exclusions.entrySet()) {
             final int excludedLineNumber = excluded.getKey(); // inclusive
             final int excludedLineNumberEnd = excludedLineNumber + excluded.getValue(); // exclusive
             if (excludedLineNumber > end)
                 continue;
-            if (trackingLine < excludedLineNumber) {
+            if (trackingLine < excludedLineNumber)
                 suppressionRanges.add(new IntRange(trackingLine, excludedLineNumber - 1));
+            if (!(trackingLine > excludedLineNumber))
                 trackingLine = excludedLineNumberEnd + 1;
-            } else if (trackingLine == excludedLineNumber) {
-                trackingLine = excludedLineNumberEnd + 1;
-            }
         }
         if (trackingLine < end)
             suppressionRanges.add(new IntRange(trackingLine, end));
