@@ -35,7 +35,7 @@ public class LineNumberRange {
         if (trackingLine < end)
             suppressionRanges.add(new IntRange(trackingLine, end));
         return suppressionRanges.stream()
-                .map(x -> "%d-%d".formatted(x.start(), x.end()))
+                .map(x -> x.start() == x.end() ? "%d".formatted(x.start()) : "%d-%d".formatted(x.start(), x.end()))
                 .collect(Collectors.joining(","));
     }
 }
