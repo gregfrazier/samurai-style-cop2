@@ -60,15 +60,23 @@ public class CheckstyleSuppressor {
         return new CheckstyleSuppressor(customSuppressions, maxSize);
     }
 
-    public String build(final Deque<DiffDocument> diffDocuments) {
+    public String buildXml(final Deque<DiffDocument> diffDocuments) {
         return String.format(suppressionContainer, suppressionHeader, staticSuppressions,
                 String.join("\n", buildList(diffDocuments)));
     }
 
-    private List<String> buildList(final Deque<DiffDocument> diffDocuments) {
+    public List<String> buildList(final Deque<DiffDocument> diffDocuments) {
         return diffDocuments.stream()
                 .map(this::suppressDiffDocument)
                 .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+    }
+
+    public List<File> buildFileList(final Deque<DiffDocument> diffDocuments) {
+        return diffDocuments.stream()
+                .filter(Objects::nonNull)
+                .map(x -> x.getNewFilename().getFilename())
+                .map(File::new)
                 .collect(Collectors.toList());
     }
 

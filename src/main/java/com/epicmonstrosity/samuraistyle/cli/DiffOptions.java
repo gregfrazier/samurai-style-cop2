@@ -4,13 +4,16 @@ import picocli.CommandLine;
 
 import java.io.File;
 
-@CommandLine.Command(name = "samuraistyle")
+@CommandLine.Command(name = "samuraistyle", showDefaultValues = true)
 public class DiffOptions {
 
-    @CommandLine.ArgGroup
+    @CommandLine.ArgGroup(heading = "Diff Input", multiplicity = "1")
     ExclusiveInput exclusiveInput;
 
-    @CommandLine.Option(names = { "-o", "--output" }, paramLabel = "FILE",  description = "Suppression file output", required = true)
+    @CommandLine.Mixin
+    CheckstyleOptions checkStyleOptions;
+
+    @CommandLine.Option(names = { "-o", "--output" }, paramLabel = "FILE",  description = "Suppression file output", defaultValue = "./suppression.xml")
     File outputFile;
 
     @CommandLine.Option(names = { "--static" }, paramLabel = "FILE", description = "Static suppression file")
@@ -35,14 +38,18 @@ public class DiffOptions {
         return exclusiveInput;
     }
 
+    public CheckstyleOptions getCheckStyleOptions() {
+        return checkStyleOptions;
+    }
+
     public static class ExclusiveInput {
         @CommandLine.Option(names = "--stdin", description = "Use Standard In for diff input", required = true)
-        boolean stdIn;
+        Boolean stdIn;
 
         @CommandLine.Option(names = { "-f", "--file" }, paramLabel = "DIFF_FILE", description = "Use diff file", required = true)
         File diff;
 
-        public boolean isStdIn() {
+        public Boolean isStdIn() {
             return stdIn;
         }
 
