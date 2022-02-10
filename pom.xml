@@ -16,7 +16,7 @@
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
-        <picocli.version>4.6.2</picocli.version>
+        <picocli.version>4.6.3</picocli.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <checkstyle.version>9.3</checkstyle.version>
         <mockito-junit.version>4.3.1</mockito-junit.version>
