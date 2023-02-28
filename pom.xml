@@ -14,7 +14,7 @@
         <maven.compiler.target>16</maven.compiler.target>
 
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
-        <maven-compiler-plugin.version>3.10.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
         <picocli.version>4.6.3</picocli.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
